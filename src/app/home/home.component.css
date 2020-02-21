@@ -1,0 +1,125 @@
+.list-content{
+    min-height:300px;
+   }
+   .list-content .list-group .title{
+     background:#5bc0de;
+     border:2px solid #DDDDDD;
+     font-weight:bold;
+     color:#FFFFFF;
+   }
+   .list-group-item img {
+       height:80px; 
+       width:80px;
+   }
+   
+   .jumbotron .btn {
+       padding: 5px 5px !important;
+       font-size: 12px !important;
+   }
+   .prj-name {
+       color:#5bc0de;    
+   }
+   .break{
+       width:100%;
+       margin:20px;
+   }
+   .name {
+       color:#5bc0de;    
+   }
+   .grey-box {
+       display: inline-flex;
+       justify-content: space-between;
+       padding: 20px !important;
+       width: 100%;
+   }
+   .width {
+       width: 100%;
+       display: inline;
+   }
+   .width .buttons {
+       display: inline;
+       float: right;
+   }
+   .big {
+       width: 65%;
+   }
+   .small {
+       width: 30%;
+   }
+   .myprofile {
+    background-color:transparent;
+    width:50%;
+    margin: 0 auto;
+    text-align:center;
+   }
+   .file {
+    margin-top: 20px;
+   }
+
+   .myprofile label{
+       margin-top: 10px;
+   }
+
+   .btn-submit {
+       margin-top: 10px;
+   }
+   .name {
+    margin-left: 10px;
+   }
+   .myprofile .name {
+       font-weight: 100;
+       color: #000000;
+   }
+   .myprofile .name b{
+       font-weight: 800;
+       color: #5bc0de;
+   }
+   .buttons a {
+    margin-left: 10px;
+    }
+    .myprofile input[type="text"]  {
+        border-radius: 8px;
+        padding: 8px 15px;
+        border: 0px;
+        background-color: rgba(211, 211, 211, .7);
+    }
+    
+   .prj-name {
+    color:#5bc0de;    
+    font-family: 'Roboto';
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.prj-name p {
+ font-family: 'Roboto-Black';
+ font-size: 25px;
+}
+.prj-name span {
+    font-size: 14px;
+}
+
+.buttons a {
+    margin-left: 10px;
+    padding: 5px;
+}
+.buttons a label {
+    margin: 0px;
+    margin-left: 5px;
+    font-weight: unset;
+    font-family: 'Poppins-Bold';
+}
+.btn-plus {
+    margin: auto;
+    margin-right: 0px;
+}
+.list-group-item {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-thumbnail {
+    border-radius: 50%;
+}

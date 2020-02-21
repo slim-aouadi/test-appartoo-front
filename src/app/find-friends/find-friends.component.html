@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Appartoo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <div class="container bootstrap snippet">
+
+    <div class="header width">
+      <h3 class="text-muted prj-name">
+        <div>
+          <span class="fa fa-users fa-2x principal-title"></span>
+          Le Réseau Social pour
+          <p>Dinosaures</p>
+        </div>
+
+        <div class="buttons">
+          <a class="btn btn-success btn-xs glyphicon glyphicon-search" title="View"><label>Find Friends</label></a>
+          <a class="btn btn-danger  btn-xs glyphicon glyphicon-user" (click)="onClickMyProfile()" title="Delete">
+            <label>My Profile </label></a>
+          <a class="btn btn-info  btn-xs glyphicon glyphicon glyphicon-log-out" (click)="logout()"
+            title="Send message"><label>Logout</label>
+          </a>
+        </div>
+      </h3>
+
+    </div>
+
+
+    <div class="jumbotron list-content">
+      <ul class="list-group">
+        <li href="#" class="list-group-item title">
+          Find New Friends Here !
+        </li>
+        <i class="fa fa-search"></i>
+        <input type="text" class="recherche" [(ngModel)]="loginToSearch" placeholder="Entrez votre recherche ici...">
+        <li *ngFor="let dinosaure of dinosauresList | filter: login : loginToSearch" class="list-group-item text-left">
+          <div>
+            <img class="img-thumbnail" src="{{ dinosaure.profileImage}}">
+            <label class="name">
+              {{dinosaure.login}}<br>
+            </label>
+          </div>
+          <div class="btn-plus">
+            <label class="pull-right">
+              <a class="btn btn-success btn-xs glyphicon glyphicon-plus" (click)="onClickAddFriend(dinosaure)"
+                title="View"></a>
+            </label>
+          </div>
+        </li>
+
+
+        <li href="#" class="list-group-item text-left">
+          <a class="btn btn-block btn-primary">
+            <i class="glyphicon glyphicon-refresh"></i>
+            Load more...
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

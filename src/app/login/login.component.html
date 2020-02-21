@@ -1,0 +1,152 @@
+<head>
+  <script
+    type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+  <!-- Custom Theme files -->
+  <link href="/assets/loginPage/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+  <link href="/assets/loginPage/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="/assets/loginPage/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <!-- //Custom Theme files -->
+  <!-- web font -->
+  <link href="//fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+  <!-- //web font -->
+</head>
+
+<body>
+  <h1>Welcome ! </h1>
+  <div *ngIf="displayLogin==true" class="main-agileits">
+    <!--form-stars-here-->
+    <div class="form-w3-agile">
+      <h2>Login Form</h2>
+      <form (ngSubmit)="Onsubmit()" [formGroup]="loginForm">
+        <div class="form-sub-w3">
+          <input type="text" formControlName="login" name="Username" placeholder="Enter your login" />
+          <div class="icon-w3">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="form-sub-w3">
+          <input formControlName="password" type="password" name="Password" placeholder="Password" />
+          <div class="icon-w3">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+          </div>
+        </div>
+        <p class="p-bottom-w3ls">Are you new to eDinosaures?
+
+          <a style="cursor: pointer" (click)="showRegister()">
+
+            Register here</a>
+
+        </p>
+
+        <div class="submit-w3l">
+          <input type="submit" (click)="onClickLogin()" value="Login">
+        </div>
+      </form>
+    </div>
+    <!--//form-ends-here-->
+  </div>
+  <div *ngIf="displayRegister==true" class="main-agileits">
+    <!--form-stars-here-->
+    <div class="form-w3-agile">
+      <h2>Registration Form</h2>
+      <form (ngSubmit)="Onsubmit()" [formGroup]="registerForm">
+        <div class="form-sub-w3">
+          <input type="text" formControlName="login" name="Username" placeholder="Enter your login "
+            [attr.aria-invalid]="registerForm.controls['login'].invalid && registerForm.controls['login'].touched ? true : null" />
+          <div class="icon-w3">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <ng-container *ngIf="registerForm.controls['login'].invalid && submitter">
+          <p style="color: white" *ngIf="registerForm.controls['login'].errors">
+            Veuillez choisir un login
+          </p>
+        </ng-container>
+
+        <div class="form-sub-w3">
+          <input formControlName="password" type="password" name="Password" placeholder="Password"
+            [attr.aria-invalid]="registerForm.controls['password'].invalid && registerForm.controls['password'].touched ? true : null" />
+          <div class="icon-w3">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+          </div>
+        </div>
+        <ng-container *ngIf="registerForm.controls['password'].invalid && submitter">
+          <p style="color: white" *ngIf="registerForm.controls['password'].errors">
+            Veuillez saisir un mot de passe
+          </p>
+        </ng-container>
+        <div class="form-sub-w3">
+          <input formControlName="race" type="text" name="Race" placeholder="Race"
+            [attr.aria-invalid]="registerForm.controls['race'].invalid && registerForm.controls['race'].touched ? true : null" />
+          <div class="icon-w3">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+          </div>
+        </div>
+        <ng-container *ngIf="registerForm.controls['race'].invalid && submitter">
+          <p style="color: white" *ngIf="registerForm.controls['race'].errors">
+            Veuillez saisir votre race
+          </p>
+        </ng-container>
+        <div class="form-sub-w3">
+          <input formControlName="famille" type="text" name="Famille" placeholder="Famille"
+            [attr.aria-invalid]="registerForm.controls['famille'].invalid && registerForm.controls['famille'].touched ? true : null" />
+          <div class="icon-w3">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+          </div>
+        </div>
+        <ng-container *ngIf="registerForm.controls['famille'].invalid && submitter">
+          <p style="color: white" *ngIf="registerForm.controls['famille'].errors">
+            Veuillez saisir votre famille
+          </p>
+        </ng-container>
+        <div class="form-sub-w3">
+          <input formControlName="nourriture" type="text" name="Nourriture" placeholder="Nourriture"
+            [attr.aria-invalid]="registerForm.controls['nourriture'].invalid && registerForm.controls['nourriture'].touched ? true : null" />
+          <div class="icon-w3">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+          </div>
+        </div>
+        <ng-container *ngIf="registerForm.controls['nourriture'].invalid && submitter">
+          <p style="color: white" *ngIf="registerForm.controls['nourriture'].errors">
+            Veuillez Choisir votre nourriture
+          </p>
+        </ng-container>
+        <div class="form-sub-w3">
+          <input formControlName="age" type="text" name="Age" placeholder="Age"
+            [attr.aria-invalid]="registerForm.controls['age'].invalid && registerForm.controls['age'].touched ? true : null" />
+          <div class="icon-w3">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+          </div>
+        </div>
+        <ng-container *ngIf="registerForm.controls['age'].invalid && submitter">
+          <p style="color: white" *ngIf="registerForm.controls['age'].errors">
+            Veuillez saisir votre age
+          </p>
+        </ng-container>
+        <div class="form-sub-w3">
+          <input formControlName="profileImage" type="file" (change)="uploadImage($event)" name="Image"
+            [attr.aria-invalid]="registerForm.controls['profileImage'].invalid && registerForm.controls['profileImage'].touched ? true : null" />
+
+        </div>
+
+        <ng-container *ngIf="registerForm.controls['profileImage'].invalid && submitter">
+          <p style="color: white" *ngIf="registerForm.controls['profileImage'].errors">
+            Veuillez choisir une photo de profil
+          </p>
+        </ng-container>
+        <p class="p-bottom-w3ls">do you have an account ?
+          <a style="cursor: pointer" (click)="showLogin()">
+            Login here
+          </a>
+        </p>
+
+        <div class="submit-w3l">
+          <input type="submit" (click)="onClickRegister()" value="Register">
+        </div>
+      </form>
+    </div>
+    <!--//form-ends-here-->
+  </div>

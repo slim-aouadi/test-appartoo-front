@@ -1,0 +1,110 @@
+
+.list-content{
+    min-height:300px;
+   }
+   .list-content .list-group .title{
+     background:#5bc0de;
+     border:2px solid #DDDDDD;
+     font-weight:bold;
+     color:#FFFFFF;
+   }
+   .list-group-item img {
+       height:80px; 
+       width:80px;
+   }
+   
+   .jumbotron .btn {
+       padding: 5px 5px !important;
+       font-size: 12px !important;
+   }
+   .prj-name {
+       color:#5bc0de;    
+       font-family: 'Roboto';
+       font-size: 16px;
+       display: flex;
+       justify-content: space-between;
+
+   }
+   .prj-name p {
+    font-family: 'Roboto-Black';
+    font-size: 25px;
+   }
+   .prj-name span {
+       font-size: 14px;
+   }
+   .break{
+       width:100%;
+       margin:20px;
+   }
+   .name {
+       color:#5bc0de;    
+   }
+   .width {
+    width: 100%;
+    display: inline;
+}
+.width .buttons {
+    display: inline;
+    float: right;
+}
+.big {
+    width: 65%;
+}
+.small {
+    width: 30%;
+}
+.myprofile {
+ height:25vh;
+ background-color:transparent;
+ width:50%;
+ margin: 0 auto;
+ text-align:center;
+}
+.name {
+    margin-left: 10px;
+}
+.recherche {
+    border-radius: 0px 6px 6px 0px;
+    border: 0px;
+    padding: 5px;
+    width: 50%;
+    margin: 10px 0px;
+}
+.recherche:focus {
+    outline-width: 0px;
+}
+
+.fa-search {
+    background-color: white;
+    border-radius: 8px 0px 0px 8px;
+    padding: 8px;
+    padding-left: 15px;
+}
+.buttons a {
+    margin-left: 10px;
+    padding: 5px;
+}
+.buttons a label {
+    margin: 0px;
+    margin-left: 5px;
+    font-weight: unset;
+    font-family: 'Poppins-Bold';
+}
+.list-group-item {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.list-group-item:hover {
+    background-color: rgba(211, 211, 211, .7);
+}
+.list-group-item:hover .name{
+    color: white;
+}
+.img-thumbnail {
+    border-radius: 50%;
+}
+.btn-plus {
+    margin: auto;
+    margin-right: 0px;
+}

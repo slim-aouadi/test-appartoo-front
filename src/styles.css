@@ -1,0 +1,110 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Ubuntu-Regular';
+    src: url('/assets/fonts/Ubuntu-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ubuntu-Light';
+    src: url('/assets/fonts/Ubuntu-Light.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Ubuntu-Bold';
+    src: url('/assets/fonts/Ubuntu-Bold.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato-Light';
+    src: url('/assets/fonts/Lato-Light.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato-Black';
+    src: url('/assets/fonts/Lato-Black.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url('/assets/fonts/Lato-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('/assets/fonts/Montserrat-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url('/assets/fonts/Montserrat-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-Thin';
+    src: url('/assets/fonts/Montserrat-Thin.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Black';
+    src: url('/assets/fonts/Roboto-Black.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('/assets/fonts/Roboto-Medium.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Roboto-Thin';
+    src: url('/assets/fonts/Roboto-Thin.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('/assets/fonts/Roboto-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('/assets/fonts/Poppins-Bold.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('/assets/fonts/Poppins-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}@font-face {
+    font-family: 'Poppins-Light';
+    src: url('/assets/fonts/Poppins-Light.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+

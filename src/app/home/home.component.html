@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Appartoo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<div class="container bootstrap snippet">
+
+		<div class="header width">
+			<h3 class="text-muted prj-name">
+				<div>
+					<span class="fa fa-users fa-2x principal-title"></span>
+					Le Réseau Social pour
+					<p>Dinosaures</p>
+				</div>
+
+				<div class="buttons">
+					<a class="btn btn-success btn-xs glyphicon glyphicon-search" (click)="onClickFindFriends()"
+						title="View"><label>Find
+							Friends</label></a>
+					<a class="btn btn-danger  btn-xs glyphicon glyphicon-user" title="Delete">
+						<label>My Profile </label></a>
+					<a class="btn btn-info  btn-xs glyphicon glyphicon glyphicon-log-out" (click)="logout()"
+						title="Send message"><label>Logout</label>
+					</a>
+				</div>
+			</h3>
+
+		</div>
+
+
+		<div class="jumbotron list-content grey-box">
+
+			<ul class="list-group big">
+				<li href="#" class="list-group-item title">
+					my friend list
+				</li>
+				<li *ngFor="let friendDinosaure of friendList" href="#" class="list-group-item text-left">
+					<div>
+						<img class="img-thumbnail" src="{{ friendDinosaure.profileImage}}">
+						<label class="name">
+							{{friendDinosaure.login}}<br>
+						</label>
+					</div>
+					<div class="btn-plus">
+
+						<label class="pull-right">
+
+							<a class="btn btn-danger  btn-xs glyphicon glyphicon-trash"
+								(click)="onClickRemoveFriend(friendDinosaure)" title="Delete"></a>
+
+						</label>
+					</div>
+				</li>
+
+				<li href="#" class="list-group-item text-left">
+					<a class="btn btn-block btn-primary">
+						<i class="glyphicon glyphicon-refresh"></i>
+						Load more...
+					</a>
+				</li>
+			</ul>
+
+			<ul class="list-group small">
+				<li href="#" class="list-group-item title" style="text-align: center;">
+					My Profile
+					<a class="btn btn-info btn-xs glyphicon glyphicon glyphicon-edit" (click)="editProfile()"
+						title="Send message" style="display:contents"> </a>
+				</li>
+
+				<li *ngIf="editForm == false" href="#" class="list-group-item text-left" style="height: 95%;">
+					<div class="myprofile">
+
+						<img class="img-thumbnail" src="{{connectedDinosaure.profileImage}}">
+						<br /> <br />
+						<label class="name">
+							<b>Login : </b>{{connectedDinosaure.login}}
+						</label>
+
+						<label class="name">
+							<b>Famille :</b> {{connectedDinosaure.famille}}
+						</label>
+						<label class="name">
+							<b>Race :</b> {{connectedDinosaure.race}}
+						</label>
+						<label class="name">
+							<b>Nourriture :</b> {{connectedDinosaure.nourriture}}
+						</label>
+						<label class="name">
+							<b>Age :</b> {{connectedDinosaure.age}}
+						</label>
+
+					</div>
+				</li>
+				<li *ngIf="editForm == true" href="#" class="list-group-item text-left" style="height: 95%;">
+					<div class="myprofile">
+						<form (submit)="saveEdit()">
+							<img class="img-thumbnail" src="{{connectedDinosaure.profileImage}}">
+							<input type="file" class="file" (change)="uploadImage($event)">
+
+							<label class="name">
+								<b>Login :</b>
+							</label>
+							<input type="text" name="login" [(ngModel)]="editedDinosaure.login">
+
+							<label class="name">
+								<b>Password :</b>
+							</label>
+							<input type="password" name="password" [(ngModel)]="editedDinosaure.password">
+
+							<label class="name">
+								<b>Famille</b>
+							</label>
+							<input type="text" name="famille" [(ngModel)]="editedDinosaure.famille">
+							<label class="name">
+								<b>Race :</b>
+							</label>
+							<input type="text" name="race" [(ngModel)]="editedDinosaure.race">
+							<label class="name">
+								<b>Nourriture :</b>
+							</label>
+							<input type="text" name="nourriture" [(ngModel)]="editedDinosaure.nourriture">
+							<label class="name">
+								<b>Age :</b>
+							</label>
+							<input type="text" name="age" [(ngModel)]="editedDinosaure.age">
+							<br />
+							<input type="submit" class="btn-submit" value="Save Edits">
+							<input type="button" class="btn-submit" (click)="cancelEditProfile()" value="Cancel Edits">
+						</form>
+					</div>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
