@@ -20,6 +20,10 @@ export class DinosaureService {
     return this.http.get<Dinosaure[]>(`${environment.apiUrl}/dinosaure/getFriends`);
   }
 
+  searchUser(dinosaure) {
+    return this.http.post<Dinosaure>(`${environment.apiUrl}/dinosaure/searchUser/`, dinosaure);
+  }
+
   updateDinosaureInformations(updatedDinosaure) {
     return this.http.put<Dinosaure>(`${environment.apiUrl}/dinosaure/update/`, updatedDinosaure);
   }

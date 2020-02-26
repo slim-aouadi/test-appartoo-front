@@ -42,12 +42,11 @@ export class FindFriendsComponent implements OnInit {
 
   createAddNewUserForm() {
     this.addNewUserForm = this.fb.group({
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      login: ['', Validators.required],
       race: ['', Validators.required],
       age: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       famille: ['', Validators.required],
       nourriture: ['', Validators.required],
-      profileImage: ['', Validators.required]
     });
   }
 
@@ -102,8 +101,7 @@ export class FindFriendsComponent implements OnInit {
       const newDinosaure = this.addNewUserForm.value;
       this.newUser = {
         ...this.newUser,
-        login: this.loginToSearch,
-        password: newDinosaure.password,
+        login: newDinosaure.login,
         race: newDinosaure.race,
         age: newDinosaure.age,
         nourriture: newDinosaure.nourriture,
@@ -111,11 +109,34 @@ export class FindFriendsComponent implements OnInit {
         friends: [],
       };
 
-      const formData = new FormData();
-      formData.append('file', this.profileImage)
-      formData.append('data', JSON.stringify(this.newUser));
-      this.ds.addNewFriend(formData).subscribe(data => {
-        this.router.navigate(['/home']);
+      /* const formData = new FormData();
+       formData.append('file', this.profileImage)
+       formData.append('data', JSON.stringify(this.newUser));
+       this.ds.addNewFriend(formData).subscribe(data => {
+         this.router.navigate(['/home']);
+       })
+     */
+      this.ds.searchUser(this.newUser).subscribe(response => {
+        if (response.data != null) {
+          if (this.connectedDinosaure.friends.includes(response.data._id)) {
+            alert("Friend exists already in your friend list")
+
+          } else {
+            this.onClickAddFriend(response.data);
+            alert("Friend Added to your friend list")
+          }
+        }
+        else {
+          const formData = new FormData();
+          formData.append('file', null)
+          this.newUser.password = this.newUser.login
+          formData.append('data', JSON.stringify(this.newUser));
+          this.ds.addNewFriend(formData).subscribe(data => {
+            alert("user created")
+            this.router.navigate(['/home']);
+          })
+
+        }
       })
     }
 

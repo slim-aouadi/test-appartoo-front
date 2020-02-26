@@ -45,98 +45,78 @@
         <input type="text" class="recherche" [(ngModel)]="loginToSearch" placeholder="Entrez votre recherche ici..."
           (ngModelChange)="onFilterValueChange()">
 
-        <div *ngIf="temporaryList.length== 0;else results">
-
-          <label>si vous voulez ajouter cet ami , appuiez sur le button dessus</label>
-          <br />
-          <input type="button" (click)="showAddFriendForm()" value="add">
-          <div *ngIf="showAddFriend==true">
-            <div class="form-w3-agile">
-              <h2>Add New User</h2>
-              <form (ngSubmit)="Onsubmit()" [formGroup]="addNewUserForm">
-
-
-                <div class="form-sub-w3">
-                  <input formControlName="password" type="password" name="Password" placeholder="Password"
-                    [attr.aria-invalid]="addNewUserForm.controls['password'].invalid && addNewUserForm.controls['password'].touched ? true : null" />
-                  <div class="icon-w3">
-                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                  </div>
-                </div>
-                <ng-container *ngIf="addNewUserForm.controls['password'].invalid && submitter">
-                  <p style="color: red" *ngIf="addNewUserForm.controls['password'].errors">
-                    Veuillez saisir un mot de passe
-                  </p>
-                </ng-container>
-                <div class="form-sub-w3">
-                  <input formControlName="race" type="text" name="Race" placeholder="Race"
-                    [attr.aria-invalid]="addNewUserForm.controls['race'].invalid && addNewUserForm.controls['race'].touched ? true : null" />
-                  <div class="icon-w3">
-                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                  </div>
-                </div>
-                <ng-container *ngIf="addNewUserForm.controls['race'].invalid && submitter">
-                  <p style="color: red" *ngIf="addNewUserForm.controls['race'].errors">
-                    Veuillez saisir votre race
-                  </p>
-                </ng-container>
-                <div class="form-sub-w3">
-                  <input formControlName="famille" type="text" name="Famille" placeholder="Famille"
-                    [attr.aria-invalid]="addNewUserForm.controls['famille'].invalid && addNewUserForm.controls['famille'].touched ? true : null" />
-                  <div class="icon-w3">
-                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                  </div>
-                </div>
-                <ng-container *ngIf="addNewUserForm.controls['famille'].invalid && submitter">
-                  <p style="color: red" *ngIf="addNewUserForm.controls['famille'].errors">
-                    Veuillez saisir votre famille
-                  </p>
-                </ng-container>
-                <div class="form-sub-w3">
-                  <input formControlName="nourriture" type="text" name="Nourriture" placeholder="Nourriture"
-                    [attr.aria-invalid]="addNewUserForm.controls['nourriture'].invalid && addNewUserForm.controls['nourriture'].touched ? true : null" />
-                  <div class="icon-w3">
-                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                  </div>
-                </div>
-                <ng-container *ngIf="addNewUserForm.controls['nourriture'].invalid && submitter">
-                  <p style="color: red" *ngIf="addNewUserForm.controls['nourriture'].errors">
-                    Veuillez Choisir votre nourriture
-                  </p>
-                </ng-container>
-                <div class="form-sub-w3">
-                  <input formControlName="age" type="text" name="Age" placeholder="Age"
-                    [attr.aria-invalid]="addNewUserForm.controls['age'].invalid && addNewUserForm.controls['age'].touched ? true : null" />
-                  <div class="icon-w3">
-                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                  </div>
-                </div>
-                <ng-container *ngIf="addNewUserForm.controls['age'].invalid && submitter">
-                  <p style="color: red" *ngIf="addNewUserForm.controls['age'].errors">
-                    Veuillez saisir votre age
-                  </p>
-                </ng-container>
-                <div class="form-sub-w3">
-                  <input formControlName="profileImage" type="file" accept="image/x-png,image/gif,image/jpeg"
-                    (change)="uploadImage($event)" name="Image"
-                    [attr.aria-invalid]="addNewUserForm.controls['profileImage'].invalid && addNewUserForm.controls['profileImage'].touched ? true : null" />
-
-                </div>
-
-                <ng-container *ngIf="addNewUserForm.controls['profileImage'].invalid && submitter">
-                  <p style="color: red" *ngIf="addNewUserForm.controls['profileImage'].errors">
-                    Veuillez choisir une photo de profil
-                  </p>
-                </ng-container>
-
-
-                <div class="submit-w3l">
-                  <input type="submit" (click)="addNewUser()" value="Save">
-                </div>
-              </form>
+        <div class="form-w3-agile">
+          <h2>Add New User</h2>
+          <form (ngSubmit)="Onsubmit()" [formGroup]="addNewUserForm">
+            <div class="form-sub-w3">
+              <input formControlName="login" type="text" name="Login" placeholder="Login"
+                [attr.aria-invalid]="addNewUserForm.controls['login'].invalid && addNewUserForm.controls['login'].touched ? true : null" />
+              <div class="icon-w3">
+                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+              </div>
             </div>
+            <ng-container *ngIf="addNewUserForm.controls['login'].invalid && submitter">
+              <p style="color: red" *ngIf="addNewUserForm.controls['login'].errors">
+                Veuillez saisir un mot de passe
+              </p>
+            </ng-container>
+            <div class="form-sub-w3">
+              <input formControlName="race" type="text" name="Race" placeholder="Race"
+                [attr.aria-invalid]="addNewUserForm.controls['race'].invalid && addNewUserForm.controls['race'].touched ? true : null" />
+              <div class="icon-w3">
+                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+              </div>
+            </div>
+            <ng-container *ngIf="addNewUserForm.controls['race'].invalid && submitter">
+              <p style="color: red" *ngIf="addNewUserForm.controls['race'].errors">
+                Veuillez saisir votre race
+              </p>
+            </ng-container>
+            <div class="form-sub-w3">
+              <input formControlName="famille" type="text" name="Famille" placeholder="Famille"
+                [attr.aria-invalid]="addNewUserForm.controls['famille'].invalid && addNewUserForm.controls['famille'].touched ? true : null" />
+              <div class="icon-w3">
+                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+              </div>
+            </div>
+            <ng-container *ngIf="addNewUserForm.controls['famille'].invalid && submitter">
+              <p style="color: red" *ngIf="addNewUserForm.controls['famille'].errors">
+                Veuillez saisir votre famille
+              </p>
+            </ng-container>
+            <div class="form-sub-w3">
+              <input formControlName="nourriture" type="text" name="Nourriture" placeholder="Nourriture"
+                [attr.aria-invalid]="addNewUserForm.controls['nourriture'].invalid && addNewUserForm.controls['nourriture'].touched ? true : null" />
+              <div class="icon-w3">
+                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+              </div>
+            </div>
+            <ng-container *ngIf="addNewUserForm.controls['nourriture'].invalid && submitter">
+              <p style="color: red" *ngIf="addNewUserForm.controls['nourriture'].errors">
+                Veuillez Choisir votre nourriture
+              </p>
+            </ng-container>
+            <div class="form-sub-w3">
+              <input formControlName="age" type="text" name="Age" placeholder="Age"
+                [attr.aria-invalid]="addNewUserForm.controls['age'].invalid && addNewUserForm.controls['age'].touched ? true : null" />
+              <div class="icon-w3">
+                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+              </div>
+            </div>
+            <ng-container *ngIf="addNewUserForm.controls['age'].invalid && submitter">
+              <p style="color: red" *ngIf="addNewUserForm.controls['age'].errors">
+                Veuillez saisir votre age
+              </p>
+            </ng-container>
 
-          </div>
+            <div class="submit-w3l">
+              <input type="submit" (click)="addNewUser()" value="Save">
+            </div>
+          </form>
+        </div>
+        <br />
+        <div *ngIf="temporaryList.length== 0;else results">
+          <label> user not found</label>
         </div>
 
         <ng-template #results>
