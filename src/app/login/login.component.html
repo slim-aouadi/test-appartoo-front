@@ -127,7 +127,8 @@
           </p>
         </ng-container>
         <div class="form-sub-w3">
-          <input formControlName="profileImage" type="file" (change)="uploadImage($event)" name="Image"
+          <input formControlName="profileImage" accept="image/x-png,image/gif,image/jpeg" type="file"
+            (change)="uploadImage($event)" name="Image"
             [attr.aria-invalid]="registerForm.controls['profileImage'].invalid && registerForm.controls['profileImage'].touched ? true : null" />
 
         </div>

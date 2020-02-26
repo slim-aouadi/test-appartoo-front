@@ -44,17 +44,13 @@ export class AuthenticationService {
   }
 
   register(dinosaure) {
-    return this.http.post<Dinosaure>(`${environment.apiUrl}/dinosaure/register`, dinosaure)
-  }
-  uploadFile(profileImage) {
-    return this.http.post<any>(`${environment.apiUrl}/dinosaure/uploadProfileImage`, profileImage).pipe(map(user => {
+    return this.http.post<any>(`${environment.apiUrl}/dinosaure/register/`, dinosaure).subscribe(user => {
       localStorage.setItem('currentUser', JSON.stringify(user));
       localStorage.setItem('connectedDinosaure', JSON.stringify(user.user));
       this.currentUserSubject.next(user);
-      return user;
-    }))
+      this.router.navigate(['/home']);
+      // return user;
+    });
   }
-
-
 
 }

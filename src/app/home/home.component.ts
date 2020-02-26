@@ -68,6 +68,7 @@ export class HomeComponent implements OnInit {
   saveEdit() {
     this.editForm = false;
     var formdata = new FormData();
+    console.log(this.newProfileImage)
     formdata.append('file', this.newProfileImage);
     formdata.append('data', JSON.stringify(this.editedDinosaure))
 

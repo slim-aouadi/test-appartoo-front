@@ -1,7 +1,7 @@
 
 
 export class Dinosaure {
-    _id: number;
+    _id?: number;
     login: String;
     password: String;
     race: String;

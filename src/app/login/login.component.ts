@@ -120,17 +120,8 @@ export class LoginComponent implements OnInit {
       };
       const formData = new FormData();
       formData.append('file', this.profileImage)
-      this.as.register(this.dinosaure).subscribe(data => {
-        this.as.uploadFile(formData).pipe(first())
-          .subscribe(
-            data => {
-              this.router.navigate([this.returnUrl]);
-            },
-            error => {
-              console.log("ERROR LOG IN COMPONENT ")
-            });
-      });
-
+      formData.append('data', JSON.stringify(this.dinosaure))
+      this.as.register(formData);
     }
   }
 }

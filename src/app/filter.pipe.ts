@@ -11,10 +11,8 @@ export class FilterPipe implements PipeTransform {
       return null;
     }
     if (!args && !loginToSearch) {
-
       return value;
     }
-    // args = args.toString().toLowerCase();
     loginToSearch = loginToSearch.toString().toLowerCase();
     return value.filter(data => {
       return data.login.includes(loginToSearch);

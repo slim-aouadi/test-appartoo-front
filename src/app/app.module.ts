@@ -14,6 +14,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { DinosaureService } from './services/dinosaure.service';
 import { FindFriendsComponent } from './find-friends/find-friends.component';
 import { FilterPipe } from './filter.pipe';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FilterPipe } from './filter.pipe';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxSmartModalModule.forRoot()
 
   ],
   providers: [

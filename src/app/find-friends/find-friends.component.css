@@ -108,3 +108,10 @@
     margin: auto;
     margin-right: 0px;
 }
+
+div.empty {
+    display:none;
+  }
+  div.empty:first-child {
+    display:block;
+  }

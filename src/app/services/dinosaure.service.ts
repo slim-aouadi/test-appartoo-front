@@ -24,5 +24,9 @@ export class DinosaureService {
     return this.http.put<Dinosaure>(`${environment.apiUrl}/dinosaure/update/`, updatedDinosaure);
   }
 
+  addNewFriend(newFriend) {
+    return this.http.post<Dinosaure>(`${environment.apiUrl}/dinosaure/newUser/`, newFriend);
+  }
+
 
 }
