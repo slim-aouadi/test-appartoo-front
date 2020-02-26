@@ -106,38 +106,49 @@ export class FindFriendsComponent implements OnInit {
         age: newDinosaure.age,
         nourriture: newDinosaure.nourriture,
         famille: newDinosaure.famille,
-        friends: [],
       };
 
-      /* const formData = new FormData();
-       formData.append('file', this.profileImage)
-       formData.append('data', JSON.stringify(this.newUser));
-       this.ds.addNewFriend(formData).subscribe(data => {
-         this.router.navigate(['/home']);
-       })
-     */
-      this.ds.searchUser(this.newUser).subscribe(response => {
-        if (response.data != null) {
-          if (this.connectedDinosaure.friends.includes(response.data._id)) {
-            alert("Friend exists already in your friend list")
+      const currentUser = {
+        login: this.connectedDinosaure.login,
+        race: this.connectedDinosaure.race,
+        age: this.connectedDinosaure.age.toString(),
+        nourriture: this.connectedDinosaure.nourriture,
+        famille: this.connectedDinosaure.famille
+      }
 
-          } else {
-            this.onClickAddFriend(response.data);
-            alert("Friend Added to your friend list")
+      if (JSON.stringify(this.newUser) === JSON.stringify(currentUser)) {
+
+        alert("Vous ne pouvez pas vous ajouter dans votre liste d'amis")
+      }
+      else if (this.newUser.login == currentUser.login) {
+        alert("Veuillez changer de login")
+      }
+      else {
+        this.ds.searchUser(this.newUser).subscribe(response => {
+          if (response.data != null) {
+            if (this.connectedDinosaure.friends.includes(response.data._id)) {
+              alert("Friend exists already in your friend list")
+
+            } else {
+              this.onClickAddFriend(response.data);
+              alert("Friend Added to your friend list")
+            }
           }
-        }
-        else {
-          const formData = new FormData();
-          formData.append('file', null)
-          this.newUser.password = this.newUser.login
-          formData.append('data', JSON.stringify(this.newUser));
-          this.ds.addNewFriend(formData).subscribe(data => {
-            alert("user created")
-            this.router.navigate(['/home']);
-          })
+          else {
+            const formData = new FormData();
+            formData.append('file', null)
+            this.newUser.password = this.newUser.login
+            this.newUser.friends = [];
+            formData.append('data', JSON.stringify(this.newUser));
+            this.ds.addNewFriend(formData).subscribe(data => {
+              alert("user created")
+              this.router.navigate(['/home']);
+            })
 
-        }
-      })
+          }
+        })
+      }
+
     }
 
   }
