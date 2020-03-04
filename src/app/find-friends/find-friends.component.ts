@@ -35,8 +35,8 @@ export class FindFriendsComponent implements OnInit {
     this.newUser = new Dinosaure();
     this.connectedDinosaure = JSON.parse(localStorage.getItem('connectedDinosaure'));
     this.ds.getAllDinosaures().subscribe(data => {
-      this.dinosauresList = data.filter(element => element._id !== this.connectedDinosaure._id);
-      this.temporaryList = this.dinosauresList;
+      //   this.dinosauresList = data.filter(element => element._id !== this.connectedDinosaure._id);
+      this.temporaryList = data;
     })
   }
 
@@ -80,6 +80,7 @@ export class FindFriendsComponent implements OnInit {
     formData.append('data', JSON.stringify(this.connectedDinosaure));
     this.ds.updateDinosaureInformations(formData).subscribe(reponse => {
       localStorage.setItem('connectedDinosaure', JSON.stringify(reponse.data));
+      this.router.navigate(['/home']);
     })
   }
 
@@ -141,8 +142,8 @@ export class FindFriendsComponent implements OnInit {
             this.newUser.friends = [];
             formData.append('data', JSON.stringify(this.newUser));
             this.ds.addNewFriend(formData).subscribe(data => {
-              alert("user created")
-              this.router.navigate(['/home']);
+              this.onClickAddFriend(data.dinosaure);
+
             })
 
           }

@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
     this.connectedDinosaure = JSON.parse(localStorage.getItem('connectedDinosaure'));
     this.ds.getMyFriends().subscribe(data => {
       this.friendList = data;
+
     })
   }
 
@@ -35,7 +36,9 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['find-friends']);
   }
   onClickRemoveFriend(friendToDelete) {
-    this.friendList.splice(this.friendList.indexOf(friendToDelete._id), 1);
+    this.friendList = this.friendList.filter(function (obj) {
+      return obj._id !== friendToDelete._id;
+    });
     this.connectedDinosaure.friends.splice(this.connectedDinosaure.friends.indexOf(friendToDelete._id), 1);
     var formData = new FormData();
     formData.append('data', JSON.stringify(this.connectedDinosaure));
@@ -68,12 +71,10 @@ export class HomeComponent implements OnInit {
   saveEdit() {
     this.editForm = false;
     var formdata = new FormData();
-    console.log(this.newProfileImage)
     formdata.append('file', this.newProfileImage);
     formdata.append('data', JSON.stringify(this.editedDinosaure))
 
     this.ds.updateDinosaureInformations(formdata).subscribe(reponse => {
-      console.log(reponse.data)
       localStorage.setItem('connectedDinosaure', JSON.stringify(reponse.data));
       this.ngOnInit();
     })

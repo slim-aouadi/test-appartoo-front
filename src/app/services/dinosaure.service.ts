@@ -29,7 +29,7 @@ export class DinosaureService {
   }
 
   addNewFriend(newFriend) {
-    return this.http.post<Dinosaure>(`${environment.apiUrl}/dinosaure/newUser/`, newFriend);
+    return this.http.post<any>(`${environment.apiUrl}/dinosaure/newUser/`, newFriend);
   }
 
 
