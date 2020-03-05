@@ -22,12 +22,9 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-
-
   logIn(dinosaure) {
     return this.http.post<any>(`${environment.apiUrl}/dinosaure/login`, dinosaure)
       .pipe(map(user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
         localStorage.setItem('connectedDinosaure', JSON.stringify(user.user));
         this.currentUserSubject.next(user);
@@ -36,7 +33,6 @@ export class AuthenticationService {
   }
 
   logout() {
-
     localStorage.removeItem('currentUser');
     localStorage.removeItem('connectedDinosaure');
     this.currentUserSubject.next(null);
@@ -49,7 +45,6 @@ export class AuthenticationService {
       localStorage.setItem('connectedDinosaure', JSON.stringify(user.user));
       this.currentUserSubject.next(user);
       this.router.navigate(['/home']);
-      // return user;
     });
   }
 

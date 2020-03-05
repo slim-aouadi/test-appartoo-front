@@ -27,14 +27,13 @@ export class HomeComponent implements OnInit {
     this.connectedDinosaure = JSON.parse(localStorage.getItem('connectedDinosaure'));
     this.ds.getMyFriends().subscribe(data => {
       this.friendList = data;
-
     })
   }
-
 
   onClickFindFriends() {
     this.router.navigate(['find-friends']);
   }
+
   onClickRemoveFriend(friendToDelete) {
     this.friendList = this.friendList.filter(function (obj) {
       return obj._id !== friendToDelete._id;
@@ -46,12 +45,14 @@ export class HomeComponent implements OnInit {
       localStorage.setItem('connectedDinosaure', JSON.stringify(reponse.data));
     })
   }
+
   editProfile(event) {
     this.editedDinosaure = {
       ...this.connectedDinosaure
     }
     this.editForm = !this.editForm;
   }
+
   cancelEditProfile() {
     this.editForm = false;
   }

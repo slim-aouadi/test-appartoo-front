@@ -25,6 +25,8 @@ export class FindFriendsComponent implements OnInit {
   addNewUserForm: FormGroup;
   profileImage: File;
   submitter: boolean;
+  // remove or change 
+  temporaryList = [];
   constructor(private fb: FormBuilder, private as: AuthenticationService, public ngxSmartModalService: NgxSmartModalService, private ds: DinosaureService, private router: Router) { }
   connectedDinosaure: Dinosaure;
 
@@ -35,8 +37,8 @@ export class FindFriendsComponent implements OnInit {
     this.newUser = new Dinosaure();
     this.connectedDinosaure = JSON.parse(localStorage.getItem('connectedDinosaure'));
     this.ds.getAllDinosaures().subscribe(data => {
-      //   this.dinosauresList = data.filter(element => element._id !== this.connectedDinosaure._id);
       this.temporaryList = data;
+      this.dinosauresList = data;
     })
   }
 
@@ -56,9 +58,8 @@ export class FindFriendsComponent implements OnInit {
   onClickMyProfile() {
     this.router.navigate(['home'])
   }
-  temporaryList = [];
+
   onFilterValueChange() {
-    this.showAddFriend = false;
     if (this.loginToSearch) {
       this.temporaryList = this.dinosauresList.filter(data => data.login.includes(this.loginToSearch));
     }
@@ -66,7 +67,6 @@ export class FindFriendsComponent implements OnInit {
       this.temporaryList = this.dinosauresList;
     }
   }
-
 
   onClickAddFriend(dinosaure) {
     this.temporaryList = this.temporaryList.filter(function (obj) {
@@ -90,11 +90,9 @@ export class FindFriendsComponent implements OnInit {
     if (this.file_size > 30) {
       event.target.value = null;
       alert("Fichier trop Volumineux , ne doit pas dépasser 30Mo");
-    }
-    else {
+    } else {
       this.profileImage = event.target.files[0]
     }
-
   }
 
   addNewUser() {
@@ -117,38 +115,12 @@ export class FindFriendsComponent implements OnInit {
         famille: this.connectedDinosaure.famille
       }
 
-      if (JSON.stringify(this.newUser) === JSON.stringify(currentUser)) {
-
-        alert("Vous ne pouvez pas vous ajouter dans votre liste d'amis")
-      }
-      else if (this.newUser.login == currentUser.login) {
-        alert("Veuillez changer de login")
-      }
-      else {
+      if (this.check_duplication(this.newUser, currentUser)) {
         this.ds.searchUser(this.newUser).subscribe(response => {
-          if (response.data != null) {
-            if (this.connectedDinosaure.friends.includes(response.data._id)) {
-              alert("Friend exists already in your friend list")
-
-            } else {
-              this.onClickAddFriend(response.data);
-              alert("Friend Added to your friend list")
-            }
-          }
-          else {
-            const formData = new FormData();
-            formData.append('file', null)
-            this.newUser.password = this.newUser.login
-            this.newUser.friends = [];
-            formData.append('data', JSON.stringify(this.newUser));
-            this.ds.addNewFriend(formData).subscribe(data => {
-              this.onClickAddFriend(data.dinosaure);
-
-            })
-
-          }
+          this.checkSearchedUser(response, this.newUser);
         })
       }
+
 
     }
 
@@ -158,8 +130,47 @@ export class FindFriendsComponent implements OnInit {
     this.showAddFriend = true;
   }
 
-  logout() {
+  registerUser(newUser) {
+    const formData = new FormData();
+    formData.append('file', null)
+    newUser.password = newUser.login
+    newUser.friends = [];
+    formData.append('data', JSON.stringify(newUser));
+    this.ds.addNewFriend(formData).subscribe(data => {
+      this.onClickAddFriend(data.dinosaure);
+    })
+  }
 
+  check_duplication(newUser, currentUser) {
+
+
+    if (newUser.login == currentUser.login) {
+      alert("Ce login exist déja ")
+      return false;
+    }
+    return true;
+  }
+
+  checkSearchedUser(response, newUser) {
+    var result = this.temporaryList.find(obj => {
+      return obj.login === newUser.login
+    })
+    if (response.data != null) {
+      if (this.connectedDinosaure.friends.includes(response.data._id)) {
+        alert("Friend exists already in your friend list")
+      } else {
+        this.onClickAddFriend(response.data);
+        alert("Friend Added to your friend list")
+      }
+    } else if (response.data == null && result != undefined) {
+      alert("Un utilisateur avec ce login existe déja")
+    }
+    else {
+      this.registerUser(this.newUser)
+    }
+  }
+
+  logout() {
     this.as.logout();
   }
 }

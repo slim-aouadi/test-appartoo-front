@@ -97,13 +97,10 @@ export class LoginComponent implements OnInit {
     if (this.file_size > 30) {
       event.target.value = null;
       alert("Fichier trop Volumineux , ne doit pas dépasser 30Mo");
-    }
-    else {
+    } else {
       this.profileImage = event.target.files[0]
     }
-
   }
-
 
   onClickRegister() {
     if (this.registerForm.valid) {

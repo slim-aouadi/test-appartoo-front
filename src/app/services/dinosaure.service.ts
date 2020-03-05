@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
 export class DinosaureService {
 
   constructor(private http: HttpClient) {
-
   }
 
   getAllDinosaures() {

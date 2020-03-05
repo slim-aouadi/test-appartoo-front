@@ -12,7 +12,4 @@ export class Dinosaure {
     profileImage: String;
     token?: string;
     data?: any;
-
-
-
 }

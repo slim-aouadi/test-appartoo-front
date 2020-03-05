@@ -32,9 +32,7 @@
           </a>
         </div>
       </h3>
-
     </div>
-
 
     <div class="jumbotron list-content">
       <ul class="list-group">
@@ -67,8 +65,9 @@
                 <i class="fa fa-unlock-alt" aria-hidden="true"></i>
               </div>
             </div>
-            <ng-container *ngIf="addNewUserForm.controls['race'].invalid && submitter">
-              <p style="color: red" *ngIf="addNewUserForm.controls['race'].errors">
+            <ng-container
+              *ngIf="addNewUserForm.controls['race'].invalid && submitter && addNewUserForm.controls['race'].errors">
+              <p style="color: red">
                 Veuillez saisir votre race
               </p>
             </ng-container>
@@ -133,18 +132,12 @@
                   title="View"></a>
               </label>
             </div>
-
           </li>
-
         </ng-template>
-
       </ul>
     </div>
   </div>
-
-
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>
